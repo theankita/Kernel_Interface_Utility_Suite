@@ -146,6 +146,6 @@ gcc Command_rm.c -o rmx
 
 >Author
 
-Ankita
+Ankita Shinde
 
 GitHub: https://github.com/theankita
