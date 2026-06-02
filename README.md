@@ -1,151 +1,180 @@
->Project Overview
+# Kernel Interface Utility Suite
+
+## Overview
 
 Kernel Interface Utility Suite is a system-level project developed in C on Linux that re-implements major Linux commands using native system calls instead of GNU utilities.
+
 The objective of this project is to understand how Linux commands work internally by directly interacting with the kernel using low-level system calls.
 
-Each command is implemented as a separate executable and integrated into the system PATH using a postfix naming convention (x) to avoid conflict with default utilities.
+Each command is implemented as a separate executable and integrated into the system PATH using a postfix naming convention (`x`) to avoid conflicts with default Linux utilities.
 
->Example
+### Example
 
-ls → lsx
+* ls → lsx
+* pwd → pwdx
+* cp → cpx
 
-pwd → pwdx
+---
 
-cp → cpx
-
->Features
+## Features
 
 * Implementation of core Linux commands
-  
 * Uses native system calls instead of library functions
-  
 * Modular architecture (one command per file)
-  
 * Improved error handling
- 
 * Input validation
-  
 * Custom flags support
-  
-* System path integration
-  
+* System PATH integration
 * Executable permission management
 
->Commands Implemented
+---
 
-pwdx – Print working directory
+## Commands Implemented
 
-lsx – List directory contents
+| Command | Description                        |
+| ------- | ---------------------------------- |
+| pwdx    | Print working directory            |
+| lsx     | List directory contents            |
+| mkdirx  | Create directory                   |
+| rmx     | Remove files/directories           |
+| cpx     | Copy files                         |
+| mvx     | Move/Rename files                  |
+| catx    | Display file contents              |
+| touchx  | Create empty file                  |
+| chmodx  | Change file permissions            |
+| statx   | Display file metadata              |
+| headx   | Display first N lines              |
+| tailx   | Display last N lines               |
+| wcx     | Count words, lines, and characters |
 
-mkdirx – Create directory
+---
 
-rmx – Remove files / directories
+## Technologies Used
 
-cpx – Copy files
+### Programming Language
 
-mvx – Move / rename files
+* C
 
-catx – Display file contents
+### Operating System
 
-touchx – Create empty file
+* Linux
 
-chmodx – Change file permissions
+### Development Tools
 
-statx – Display file metadata
+* GCC Compiler
+* Linux Terminal
+* Makefile (if used)
 
-headx – Display first N lines
+### Core Concepts
 
-tailx – Display last N lines
+* Linux System Calls
+* Process Management
+* File Handling
+* Directory Traversal
+* User Space & Kernel Space Interaction
 
-wcx – Count words / lines / characters
+---
 
->System Calls Used
+## System Calls Used
 
-open()
+* open()
+* read()
+* write()
+* close()
+* stat()
+* lstat()
+* mkdir()
+* unlink()
+* rmdir()
+* chmod()
+* fork()
+* exec()
+* wait()
+* opendir()
+* readdir()
 
-read()
+---
 
-write()
+## Project Structure
 
-close()
+```text
+Kernel_Interface_Utility_Suite/
+│
+├── src/
+│   ├── Command_ls.c
+│   ├── Command_pwd.c
+│   ├── Command_rm.c
+│   └── ...
+│
+├── bin/
+│   ├── lsx
+│   ├── pwdx
+│   ├── rmx
+│   └── ...
+│
+├── demo_files/
+│
+└── README.md
+```
 
-stat()
+---
 
-lstat()
+## Architecture
 
-mkdir()
+Each Linux command is implemented in a separate source file.
 
-unlink()
+The source files are compiled independently to generate executable binaries.
 
-rmdir()
+Executables are stored in the `bin` directory and integrated into the system PATH.
 
-chmod()
+The project follows a modular design where every command operates independently while sharing common Linux system call concepts.
 
-fork()
+---
 
-exec()
+## System Integration
 
-wait()
+* All executables are compiled using GCC.
+* Executables are added to the system PATH variable.
+* Commands can be executed directly from the terminal.
+* Postfix naming convention (`x`) prevents conflicts with existing Linux utilities.
 
-opendir()
+---
 
-readdir()
+## Learning Outcomes
 
->Project Architecture
+* Deep understanding of Linux system calls
+* File descriptor handling
+* Directory traversal using opendir() and readdir()
+* Understanding inode structures and file metadata
+* Process creation using fork() and exec()
+* User space to kernel space interaction
+* Understanding PATH variables and executable resolution
+* Hands-on experience with operating system programming
 
-Each command is implemented in a separate source file.
+---
 
-Executables are generated for each command and stored in the bin directory.
+## Compilation
 
-Source files are stored in the src directory.
-
-Demo files are used for testing file operations.
-
-The project follows modular design where each command works independently.
-
->System Integration
-
-All executables are compiled using gcc.
-
-Executables are added to the system PATH variable.
-
-Commands can be used directly from the terminal.
-
-Postfix naming convention (x) is used to avoid conflict with default Linux commands.
-
->Learning Outcomes
-
-Deep understanding of Linux system calls
-
-File descriptor handling
-
-Directory traversal using opendir and readdir
-
-Understanding inode and file metadata
-
-Process creation using fork and exec
-
-User space to kernel space interaction
-
-Understanding PATH variable and executable resolution
-
-Hands-on experience with OS level programming
-
->Compilation
-
+```bash
 gcc Command_ls.c -o lsx
-
 gcc Command_pwd.c -o pwdx
-
 gcc Command_rm.c -o rmx
+```
 
->Run Commands
+---
+
+## Run Commands
+
+```bash
 ./lsx
 ./pwdx
 ./rmx file.txt
+```
 
->Author
+---
 
-Ankita Shinde
+## Author
+
+**Ankita Shinde**
 
 GitHub: https://github.com/theankita
