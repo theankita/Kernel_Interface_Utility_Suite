@@ -112,8 +112,6 @@ Kernel_Interface_Utility_Suite/
 │   ├── rmx
 │   └── ...
 │
-├── demo_files/
-│
 └── README.md
 ```
 
